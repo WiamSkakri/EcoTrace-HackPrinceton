@@ -35,32 +35,41 @@ Sustainify combines real-time impact tracking, AI-powered recommendations, and c
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18 or higher
-- npm or yarn
-- Expo CLI
+
+Before you begin, ensure you have the following installed:
+- **Node.js** 18 or higher ([Download](https://nodejs.org/))
+- **npm** or **yarn** package manager
+- **Expo CLI** (installed automatically with dependencies)
+- **Google Gemini API Key** ([Get one here](https://ai.google.dev/))
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/sustainify.git
-cd sustainify
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/sustainify.git
+   cd sustainify
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-3. Create a `.env` file in the root directory and add your environment variables:
-```
-EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
-```
+3. **Configure environment variables:**
 
-4. Start the development server:
-```bash
-npm run dev
-```
+   Create a `.env` file in the root directory:
+   ```env
+   EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application:**
+   - Open your browser and navigate to the URL shown in the terminal (typically `http://localhost:8081`)
+   - Or scan the QR code with the Expo Go app on your mobile device
 
 ## 📱 Platform Support
 
