@@ -1,8 +1,10 @@
-# Sustainify
+# Sustainify 🌍
 
-![Sustainify Banner](https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200&h=400)
+A comprehensive sustainability tracking and improvement platform that empowers users to monitor their environmental impact, compete with eco-warriors worldwide, and make informed decisions for a greener future.
 
-Sustainify is a comprehensive sustainability tracking and improvement platform that helps users monitor their environmental impact, compete with others, and make more eco-conscious decisions.
+## Overview
+
+Sustainify combines real-time impact tracking, AI-powered recommendations, and community engagement to help individuals reduce their carbon footprint and adopt sustainable lifestyles. Track your progress, discover eco-friendly places, and get personalized advice from our AI assistant.
 
 ## 🌱 Features
 
