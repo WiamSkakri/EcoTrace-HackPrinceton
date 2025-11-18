@@ -21,7 +21,7 @@ export default async function handler(
       let allTransactions: any[] = [];
 
       do {
-        const response = await fetch(`${KNOT_API_BASE}/transactions/sync`, {
+        const fetchResponse = await fetch(`${KNOT_API_BASE}/transactions/sync`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -34,13 +34,13 @@ export default async function handler(
           })
         });
 
-        if (!response.ok) {
-          const errorData = await response.json();
+        if (!fetchResponse.ok) {
+          const errorData = await fetchResponse.json();
           console.error("Error from Knot Sync Transactions:", errorData);
-          return res.status(response.status).json({ error: errorData });
+          return res.status(fetchResponse.status).json({ error: errorData });
         }
 
-        const syncData = await response.json();
+        const syncData = await fetchResponse.json();
         const transactions = syncData.transactions || [];
         cursor = syncData.next_cursor || null;
         allTransactions = allTransactions.concat(transactions);
