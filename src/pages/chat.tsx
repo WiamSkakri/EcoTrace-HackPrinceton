@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { Send } from 'lucide-react';
-import { getGeminiResponse } from '@/lib/gemini';
+import { getOpenAIResponse } from '@/lib/openai';
 import styles from '@/styles/Chat.module.css';
 
 interface Message {
@@ -62,7 +62,7 @@ export default function Chat() {
     if (!hasStartedChat) setHasStartedChat(true);
 
     try {
-      const response = await getGeminiResponse(
+      const response = await getOpenAIResponse(
         userMessage.text,
         transactionsData,
         brandsData,
