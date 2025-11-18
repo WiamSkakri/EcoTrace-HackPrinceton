@@ -21,7 +21,7 @@ export default async function handler(
       let allTransactions: any[] = [];
 
       do {
-        const fetchResponse = await fetch(`${KNOT_API_BASE}/transactions/sync`, {
+        const fetchResponse: Response = await fetch(`${KNOT_API_BASE}/transactions/sync`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
