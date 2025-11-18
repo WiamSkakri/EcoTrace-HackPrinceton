@@ -28,11 +28,11 @@ export default function Leaderboard() {
       .catch(err => console.error('Error loading leaderboard:', err));
   }, []);
 
-  const getMedalEmoji = (index: number) => {
-    if (index === 0) return '🥇';
-    if (index === 1) return '🥈';
-    if (index === 2) return '🥉';
-    return `${index + 1}`;
+  const getRankVariant = (index: number) => {
+    if (index === 0) return styles.rankGold;
+    if (index === 1) return styles.rankSilver;
+    if (index === 2) return styles.rankBronze;
+    return '';
   };
 
   const isNegativeScore = (score: number) => score < 0;
@@ -41,13 +41,24 @@ export default function Leaderboard() {
     <Layout>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.column}>
-            <h1 className={styles.title}>🏆 Global Sustainability Leaderboard</h1>
+          <section className={styles.header}>
+            <p className={styles.pageEyebrow}>Leaderboard</p>
+            <h1 className={styles.title}>Global Sustainability Leaderboard</h1>
+            <p className={styles.description}>
+              Track top community performers and pinpoint the purchases that will move your score upward.
+            </p>
+          </section>
+
+          <section className={styles.panel}>
+            <div className={styles.panelHeader}>
+              <h2 className={styles.sectionTitle}>Current rankings</h2>
+              <p className={styles.sectionSubtitle}>Live snapshot of the strongest sustainability scores</p>
+            </div>
             <div className={styles.scrollView}>
               <div className={styles.leaderboardContainer}>
                 {leaderboardData.map((item, index) => (
                   <div key={item.user_id} className={styles.leaderItem}>
-                    <span className={styles.rank}>{getMedalEmoji(index)}</span>
+                    <span className={`${styles.rankBadge} ${getRankVariant(index)}`}>{index + 1}</span>
                     <div className={styles.userInfo}>
                       <h3 className={styles.userName}>{item.user_id}</h3>
                       <p className={styles.userScore}>{item.score.toFixed(2)} points</p>
@@ -56,13 +67,13 @@ export default function Leaderboard() {
                 ))}
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className={styles.divider} />
-
-          <div className={styles.column}>
-            <h2 className={styles.subheading}>🔄 How can I climb up the leaderboard?</h2>
-            <p className={styles.description}>Replace these products!</p>
+          <section className={styles.panel}>
+            <div className={styles.panelHeader}>
+              <h2 className={styles.sectionTitle}>Improve your standing</h2>
+              <p className={styles.sectionSubtitle}>Prioritize replacing the following purchases</p>
+            </div>
             <div className={styles.scrollView}>
               <div className={styles.productsContainer}>
                 {harmfulProducts.map((item, index) => {
@@ -74,18 +85,17 @@ export default function Leaderboard() {
                     >
                       <h4 className={styles.productName}>{item.product_name}</h4>
                       <p className={styles.productDetails}>
-                        🛍️ Brand: {item.brand} | 🏪 Store: {item.store}
+                        Brand: {item.brand} | Store: {item.store}
                       </p>
                       <p className={styles.productScore}>
-                        {negative ? '🔻' : '🔼'} Sustainability Score:{' '}
-                        <span className={styles.scoreValue}>{item.score}</span>
+                        Sustainability Score: <span className={styles.scoreValue}>{item.score}</span>
                       </p>
                     </div>
                   );
                 })}
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </Layout>

@@ -100,84 +100,98 @@ export default function Chat() {
   return (
     <Layout>
       <div className={styles.container}>
-        <div className={styles.chatContainer}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>🌱 Eco Chat Assistant</h1>
-            <p className={styles.subtitle}>Get personalized sustainability insights</p>
-          </div>
-
-          {!hasStartedChat && (
-            <div className={styles.welcomeContainer}>
+        {!hasStartedChat ? (
+          <div className={styles.heroSection}>
+            <div className={styles.heroContent}>
               <div className={styles.glowingIcon}>🌍</div>
               <h2 className={styles.welcomeTitle}>Welcome to Eco Chat!</h2>
               <p className={styles.welcomeText}>
                 I'm here to help you understand your environmental impact and suggest ways to improve it.
               </p>
-              <div className={styles.quickQuestions}>
-                <p className={styles.quickQuestionsTitle}>Try asking:</p>
-                <div className={styles.questionButtons}>
-                  {quickQuestions.map((q, i) => (
-                    <button
-                      key={i}
-                      className={styles.questionButton}
-                      onClick={() => {
-                        setMessage(q);
-                        setTimeout(() => sendMessage(), 100);
-                      }}
-                      disabled={!dataLoaded}
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
+            </div>
+            <div className={`${styles.quickQuestions} ${styles.heroQuickQuestions}`}>
+              <p className={styles.quickQuestionsTitle}>Try asking:</p>
+              <div className={styles.questionButtons}>
+                {quickQuestions.map((q, i) => (
+                  <button
+                    key={i}
+                    className={styles.questionButton}
+                    onClick={() => {
+                      setMessage(q);
+                      setTimeout(() => sendMessage(), 100);
+                    }}
+                    disabled={!dataLoaded}
+                  >
+                    {q}
+                  </button>
+                ))}
               </div>
             </div>
-          )}
-
-          <div className={styles.messagesContainer} ref={scrollRef}>
-            {messages.map(msg => (
-              <div
-                key={msg.id}
-                className={`${styles.messageWrapper} ${msg.isBot ? styles.botMessage : styles.userMessage}`}
+            <form className={`${styles.inputContainer} ${styles.heroInputContainer}`} onSubmit={sendMessage}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder={dataLoaded ? "Ask about your sustainability..." : "Loading data..."}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                disabled={isLoading || !dataLoaded}
+              />
+              <button
+                type="submit"
+                className={styles.sendButton}
+                disabled={isLoading || message.trim() === '' || !dataLoaded}
               >
-                <div className={styles.messageBubble}>
-                  {msg.isBot && <span className={styles.botIcon}>🤖</span>}
-                  <p className={styles.messageText}>{msg.text}</p>
-                </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div className={`${styles.messageWrapper} ${styles.botMessage}`}>
-                <div className={styles.messageBubble}>
-                  <span className={styles.botIcon}>🤖</span>
-                  <div className={styles.loadingDots}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <Send size={20} />
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div className={styles.chatContainer}>
+            <div className={styles.messagesContainer} ref={scrollRef}>
+              {messages.map(msg => (
+                <div
+                  key={msg.id}
+                  className={`${styles.messageWrapper} ${msg.isBot ? styles.botMessage : styles.userMessage}`}
+                >
+                  <div className={styles.messageBubble}>
+                    {msg.isBot && <span className={styles.botIcon}>🤖</span>}
+                    <p className={styles.messageText}>{msg.text}</p>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              ))}
+              {isLoading && (
+                <div className={`${styles.messageWrapper} ${styles.botMessage}`}>
+                  <div className={styles.messageBubble}>
+                    <span className={styles.botIcon}>🤖</span>
+                    <div className={styles.loadingDots}>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
-          <form className={styles.inputContainer} onSubmit={sendMessage}>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder={dataLoaded ? "Ask about your sustainability..." : "Loading data..."}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              disabled={isLoading || !dataLoaded}
-            />
-            <button
-              type="submit"
-              className={styles.sendButton}
-              disabled={isLoading || message.trim() === '' || !dataLoaded}
-            >
-              <Send size={20} />
-            </button>
-          </form>
-        </div>
+            <form className={styles.inputContainer} onSubmit={sendMessage}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder={dataLoaded ? "Ask about your sustainability..." : "Loading data..."}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                disabled={isLoading || !dataLoaded}
+              />
+              <button
+                type="submit"
+                className={styles.sendButton}
+                disabled={isLoading || message.trim() === '' || !dataLoaded}
+              >
+                <Send size={20} />
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </Layout>
   );

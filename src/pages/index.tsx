@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
-import { Leaf, Sun, TrendingUp } from 'lucide-react';
+import { Leaf, Sun, TrendingUp, ChevronDown } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import styles from '@/styles/Dashboard.module.css';
 
@@ -86,12 +86,38 @@ function TipCard({ tip }: { tip: { title: string; text: string } }) {
 
 export default function Dashboard() {
   const [financeData, setFinanceData] = useState<any>(null);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
     fetch('/api/finance')
       .then(res => res.json())
       .then(data => setFinanceData(data))
       .catch(err => console.error('Error fetching finance data:', err));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const updateTheme = () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') as 'light' | 'dark' | null;
+      if (currentTheme) {
+        setTheme(currentTheme);
+      }
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          updateTheme();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    return () => observer.disconnect();
   }, []);
 
   const metrics: MetricCardProps[] = [
@@ -152,15 +178,31 @@ export default function Dashboard() {
     { name: 'Jun', score: 88 },
   ];
 
+  const scrollToContent = () => {
+    const contentSection = document.getElementById('content-section');
+    if (contentSection) {
+      contentSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const isLightTheme = theme === 'light';
+  const axisColor = isLightTheme ? '#000' : '#fff';
+  const gridColor = isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+
   return (
     <Layout>
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>EcoTrace</h1>
-          <p className={styles.subtitle}>Track your environmental impact through every purchase and build a more sustainable future</p>
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>EcoTrace</h1>
+            <p className={styles.subtitle}>Track your environmental impact through every purchase and build a more sustainable future</p>
+          </div>
+          <button className={styles.scrollButton} onClick={scrollToContent} aria-label="Scroll to content">
+            <ChevronDown size={40} />
+          </button>
         </header>
 
-        <div className={styles.metricsGrid}>
+        <div id="content-section" className={styles.metricsGrid}>
           {metrics.map((metric, index) => (
             <MetricCard key={index} {...metric} />
           ))}
@@ -189,9 +231,9 @@ export default function Dashboard() {
           </h2>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-              <XAxis dataKey="name" stroke="rgba(255,255,255,0.6)" />
-              <YAxis stroke="rgba(255,255,255,0.6)" />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+              <XAxis dataKey="name" stroke={axisColor} tick={{ fill: axisColor }} />
+              <YAxis stroke={axisColor} tick={{ fill: axisColor }} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: 'rgba(26, 31, 46, 0.95)',

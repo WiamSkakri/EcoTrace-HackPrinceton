@@ -7,6 +7,58 @@
   padding: 2rem 1rem;
 }
 
+.heroSection {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  min-height: calc(100vh - 180px);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heroQuickQuestions {
+  max-width: 640px;
+  text-align: center;
+  width: 100%;
+}
+
+.heroQuickQuestions .questionButtons {
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  justify-items: stretch;
+}
+
+@media (max-width: 640px) {
+  .heroQuickQuestions .questionButtons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroInputContainer {
+  width: 100%;
+  max-width: 640px;
+}
+
+.heroInputContainer .input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heroInputContainer .input:focus {
+  background: rgba(255, 255, 255, 0.18);
+}
+
 .chatContainer {
   width: 100%;
   max-width: 800px;
@@ -106,6 +158,10 @@
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.875rem;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .questionButton:hover:not(:disabled) {
@@ -261,6 +317,13 @@
   cursor: not-allowed;
 }
 
+.heroInputContainer {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
 .sendButton {
   padding: 0.875rem 1.25rem;
   background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
@@ -282,4 +345,110 @@
 .sendButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Light Mode Overrides */
+[data-theme='light'] .chatContainer {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .header {
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .title {
+  color: #000;
+}
+
+[data-theme='light'] .subtitle {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] .welcomeTitle {
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='light'] .welcomeText {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme='light'] .quickQuestionsTitle {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] .questionButton {
+  background: rgba(46, 125, 50, 0.1);
+  border: 1px solid rgba(46, 125, 50, 0.3);
+  color: #000;
+}
+
+[data-theme='light'] .questionButton:hover:not(:disabled) {
+  background: rgba(46, 125, 50, 0.2);
+  border-color: rgba(46, 125, 50, 0.5);
+}
+
+[data-theme='light'] .messagesContainer::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .messagesContainer::-webkit-scrollbar-thumb {
+  background: rgba(46, 125, 50, 0.3);
+}
+
+[data-theme='light'] .userMessage .messageBubble {
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: #fff;
+}
+
+[data-theme='light'] .botMessage .messageBubble {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+[data-theme='light'] .loadingDots span {
+  background: #2e7d32;
+}
+
+[data-theme='light'] .inputContainer {
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #000;
+}
+
+[data-theme='light'] .input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .input:focus {
+  border-color: rgba(46, 125, 50, 0.5);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .heroInputContainer .input {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .heroInputContainer .input:focus {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .sendButton {
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: #fff;
+}
+
+[data-theme='light'] .sendButton:hover:not(:disabled) {
+  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
 }

@@ -5,39 +5,15 @@
 
 .content {
   display: flex;
-  flex-direction: row;
-  padding: 2rem;
-  max-width: 1400px;
+  flex-direction: column;
+  padding: 3rem 1.5rem 4rem;
+  max-width: 960px;
   margin: 0 auto;
   gap: 2rem;
 }
 
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
-  }
-}
-
-.column {
-  flex: 1;
-  min-width: 300px;
-}
-
-.divider {
-  width: 1px;
-  background: #27272a;
-}
-
-@media (max-width: 768px) {
-  .divider {
-    width: 100%;
-    height: 1px;
-    margin: 1rem 0;
-  }
-}
-
 .scrollView {
-  max-height: calc(100vh - 200px);
+  max-height: 420px;
   overflow-y: auto;
   padding-right: 0.5rem;
 }
@@ -60,12 +36,54 @@
   background: rgba(74, 222, 128, 0.5);
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pageEyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .title {
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #fff;
-  text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  max-width: 720px;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+}
+
+.panelHeader {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sectionSubtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
 }
 
 .leaderboardContainer {
@@ -91,10 +109,33 @@
   box-shadow: 0 4px 20px rgba(74, 222, 128, 0.15);
 }
 
-.rank {
-  font-size: 2rem;
-  min-width: 60px;
-  text-align: center;
+.rankBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rankGold {
+  background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+  color: #1f2937;
+}
+
+.rankSilver {
+  background: linear-gradient(135deg, #e5e7eb 0%, #cbd5f5 100%);
+  color: #1f2937;
+}
+
+.rankBronze {
+  background: linear-gradient(135deg, #fcd9bd 0%, #f97316 100%);
+  color: #1f2937;
 }
 
 .userInfo {
@@ -112,19 +153,6 @@
   color: #4ade80;
   font-size: 0.875rem;
   font-weight: 500;
-}
-
-.subheading {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-
-.description {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
 }
 
 .productsContainer {
@@ -192,4 +220,44 @@
 
 .positive .scoreValue {
   color: #22c55e;
+}
+
+/* Light Mode Overrides */
+[data-theme='light'] .pageEyebrow {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .title,
+[data-theme='light'] .subheading {
+  color: #000;
+}
+
+[data-theme='light'] .description {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] .panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #111827;
+}
+
+[data-theme='light'] .sectionSubtitle {
+  color: rgba(15, 23, 42, 0.65);
+}
+
+[data-theme='light'] .scrollView::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .scrollView::-webkit-scrollbar-thumb {
+  background: rgba(46, 125, 50, 0.3);
+}
+
+[data-theme='light'] .scrollView::-webkit-scrollbar-thumb:hover {
+  background: rgba(46, 125, 50, 0.5);
 }

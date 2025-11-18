@@ -20,7 +20,7 @@
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.65);
   font-size: 1rem;
 }
 
@@ -72,7 +72,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: #111827;
 }
 
 .placesGrid {
@@ -82,9 +82,8 @@
 }
 
 .placeCard {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 16px;
   padding: 1.5rem;
   transition: all 0.2s;
@@ -93,8 +92,8 @@
 
 .placeCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(74, 222, 128, 0.3);
-  box-shadow: 0 10px 30px rgba(74, 222, 128, 0.15);
+  border-color: #4ade80;
+  box-shadow: 0 10px 30px rgba(74, 222, 128, 0.25);
 }
 
 .placeCardHeader {
@@ -107,7 +106,7 @@
 .placeCardName {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #fff;
+  color: #0f172a;
 }
 
 .placeCardRating {
@@ -123,7 +122,15 @@
 }
 
 .placeCardDescription {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(15, 23, 42, 0.75);
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+[data-theme='dark'] .subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+[data-theme='dark'] .listTitle {
+  color: #f8fafc;
 }
