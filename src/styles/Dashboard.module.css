@@ -6,22 +6,31 @@
 
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 6rem;
   font-weight: 700;
   background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.25rem;
+  max-width: 700px;
+  line-height: 1.6;
 }
 
 .metricsGrid {

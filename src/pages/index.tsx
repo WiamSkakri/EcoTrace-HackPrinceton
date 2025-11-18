@@ -156,8 +156,8 @@ export default function Dashboard() {
     <Layout>
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>My Sustainability Impact</h1>
-          <p className={styles.subtitle}>Track your eco-friendly journey</p>
+          <h1 className={styles.title}>EcoTrace</h1>
+          <p className={styles.subtitle}>Track your environmental impact through every purchase and build a more sustainable future</p>
         </header>
 
         <div className={styles.metricsGrid}>
