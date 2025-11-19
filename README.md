@@ -1,12 +1,12 @@
 
 https://github.com/user-attachments/assets/3647cf5d-b88d-4682-9629-192581fa107a
-# Ecotrace
+# EcoTrace
 
 A comprehensive sustainability tracking and improvement platform that empowers users to monitor their environmental impact, compete with eco-warriors worldwide, and make informed decisions for a greener future.
 
 ## Overview
 
-Ecotrace combines real-time impact tracking, AI-powered recommendations, community engagement, and Knot API transaction integration to help individuals reduce their carbon footprint and adopt sustainable lifestyles. Track your progress, discover eco-friendly places, and get personalized advice from our AI assistant.
+EcoTrace combines real-time impact tracking, AI-powered recommendations, community engagement, and Knot API transaction integration to help individuals reduce their carbon footprint and adopt sustainable lifestyles. Track your progress, discover eco-friendly places, and get personalized advice from our AI assistant.
 
 ## Features
 
@@ -24,7 +24,7 @@ Ecotrace combines real-time impact tracking, AI-powered recommendations, communi
 - Get personalized improvement suggestions based on purchases
 
 ### 3. AI-Powered Eco Assistant
-- Get personalized sustainability advice powered by Google Gemini AI
+- Get personalized sustainability advice powered by OpenAI
 - Analyze shopping patterns from your transactions
 - Receive eco-friendly product recommendations
 - Learn about sustainable alternatives
@@ -48,15 +48,15 @@ Ecotrace combines real-time impact tracking, AI-powered recommendations, communi
 Before you begin, ensure you have the following installed:
 - **Node.js** 18 or higher ([Download](https://nodejs.org/))
 - **npm** or **yarn** package manager
-- **Google Gemini API Key** ([Get one here](https://ai.google.dev/))
+- **OpenAI API Key** ([Get one here](https://platform.openai.com/api-keys))
 - **Knot API Credentials** ([Sign up here](https://knotapi.com/))
 
 ### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/sustainify.git
-   cd sustainify
+   git clone https://github.com/yourusername/ecotrace.git
+   cd ecotrace
    ```
 
 2. **Install dependencies:**
@@ -72,8 +72,8 @@ Before you begin, ensure you have the following installed:
    KNOT_CLIENT_ID=your_knot_client_id_here
    KNOT_CLIENT_SECRET=your_knot_client_secret_here
 
-   # Google Gemini AI API Key
-   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   # OpenAI API Key
+   OPENAI_API_KEY=your_openai_api_key_here
 
    # Optional: Port configuration
    PORT=3000
@@ -87,6 +87,44 @@ Before you begin, ensure you have the following installed:
 5. **Access the application:**
    - Open your browser and navigate to `http://localhost:3000`
    - The app will be running with all four tabs: Dashboard, Leaderboard, Eco Chat, and Map
+
+## Testing
+
+This project includes comprehensive test coverage for API routes, utility functions, and React components.
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (useful during development)
+npm run test:watch
+
+# Generate test coverage report
+npm run test:coverage
+```
+
+### Test Coverage
+
+Current test coverage includes:
+- **API Routes**: Transaction handling, finance calculations, and data aggregation
+- **Utility Functions**: Knot API authentication, OpenAI integration
+- **React Components**: Layout, navigation, theme switching, leaderboard, and chat interface
+
+Coverage metrics:
+- Overall: ~48% code coverage
+- API Routes (transactions, finance): 100%
+- Knot utilities: 100%
+- Layout component: 83%
+- Leaderboard page: 100%
+- Chat page: 86%
+
+### Test Technologies
+
+- [Jest](https://jestjs.io/) - Testing framework
+- [React Testing Library](https://testing-library.com/react) - Component testing
+- [node-mocks-http](https://www.npmjs.com/package/node-mocks-http) - API route testing
 
 ## Platform Support
 
@@ -108,12 +146,12 @@ Before you begin, ensure you have the following installed:
 - [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction) - Serverless API endpoints
 - [SQLite3](https://www.sqlite.org/) - Embedded database
 - [Knot API](https://knotapi.com/) - Transaction data integration
-- [Google Gemini AI](https://ai.google.dev/) - AI-powered assistant
+- [OpenAI API](https://platform.openai.com/) - AI-powered assistant
 
 ## Project Structure
 
 ```
-sustainify/
+ecotrace/
 ├── src/
 │   ├── pages/
 │   │   ├── api/              # Next.js API routes
@@ -131,17 +169,16 @@ sustainify/
 │   │   └── Layout.tsx        # Main layout with navigation
 │   ├── lib/
 │   │   ├── db.ts            # SQLite database connection
-│   │   ├── gemini.ts        # Gemini AI integration
+│   │   ├── openai.ts        # OpenAI integration
 │   │   └── knot.ts          # Knot API utilities
 │   └── styles/
 │       ├── globals.css      # Global styles
 │       └── *.module.css     # Page-specific styles
 ├── public/
 │   └── data/                # JSON data files
-├── Wiam/                    # Old Expo app (archived)
-├── server.js               # Legacy Express server (reference)
 ├── sustainability.db       # Sustainability scoring database
 ├── transactions.db         # Knot API transactions database
+├── jest.config.js          # Jest testing configuration
 ├── next.config.js          # Next.js configuration
 ├── tsconfig.json           # TypeScript configuration
 └── package.json            # Dependencies
@@ -153,7 +190,7 @@ sustainify/
 |----------|-------------|
 | `KNOT_CLIENT_ID` | Knot API client ID for transaction integration |
 | `KNOT_CLIENT_SECRET` | Knot API client secret |
-| `NEXT_PUBLIC_GEMINI_API_KEY` | Google Gemini AI API key for the sustainability assistant |
+| `OPENAI_API_KEY` | OpenAI API key for the sustainability assistant |
 | `PORT` | Server port (default: 3000) |
 
 ## Design System
@@ -187,7 +224,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Your Name - [@yourusername](https://twitter.com/yourusername)
 
-Project Link: [https://github.com/yourusername/sustainify](https://github.com/yourusername/sustainify)
+Project Link: [https://github.com/yourusername/ecotrace](https://github.com/yourusername/ecotrace)
 
 ## Acknowledgments
 
