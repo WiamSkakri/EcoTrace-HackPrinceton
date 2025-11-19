@@ -1,10 +1,12 @@
-# Sustainify
+
+https://github.com/user-attachments/assets/3647cf5d-b88d-4682-9629-192581fa107a
+# Ecotrace
 
 A comprehensive sustainability tracking and improvement platform that empowers users to monitor their environmental impact, compete with eco-warriors worldwide, and make informed decisions for a greener future.
 
 ## Overview
 
-Sustainify combines real-time impact tracking, AI-powered recommendations, community engagement, and Knot API transaction integration to help individuals reduce their carbon footprint and adopt sustainable lifestyles. Track your progress, discover eco-friendly places, and get personalized advice from our AI assistant.
+Ecotrace combines real-time impact tracking, AI-powered recommendations, community engagement, and Knot API transaction integration to help individuals reduce their carbon footprint and adopt sustainable lifestyles. Track your progress, discover eco-friendly places, and get personalized advice from our AI assistant.
 
 ## Features
 
