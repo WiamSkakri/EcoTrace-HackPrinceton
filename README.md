@@ -220,14 +220,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername)
-
-Project Link: [https://github.com/yourusername/ecotrace](https://github.com/yourusername/ecotrace)
-
-## Acknowledgments
-
-- [Unsplash](https://unsplash.com) for beautiful images
-- [OpenStreetMap](https://www.openstreetmap.org) for map data
-- All contributors who have helped this project grow
